@@ -46,7 +46,7 @@ h1 > p {
     flex-wrap: wrap;
 }
 
-.areaGame > div {
+.areaGame > li {
     width: 117px;
     height: 146px;
 
@@ -59,9 +59,19 @@ h1 > p {
     justify-content: center;
     align-items: center ;
     cursor: pointer;
+
+    transition: all 0.8s linear;
+}
+
+.virada {
+    transform: rotateY(180deg);
 }
 
 .areaGame img {
     width: 100px;
     height: 100px;
+}
+
+.verso {
+    display: none;
 }
