@@ -7,6 +7,8 @@ let quantCartas;
 function startGame () {
     quantCartas = 1;
     jogadas = 0;
+    deck = [];
+    liberaClick = true;
     while((quantCartas % 2 !== 0) || (quantCartas > 14 ) || (quantCartas < 4) ){
         quantCartas = prompt("Bem vindo(a) ao Parrot Card Game!!\n\nCom qauntas cartas você quer jogar(de 4 até 14)?");
     }
@@ -37,7 +39,8 @@ function createGame () {
 }
 
 function desvirarCarta (elemento) {
-    if(elemento.classList.contains("virada") == false){
+    if((elemento.classList.contains("virada") == false) && liberaClick){
+        liberaClick = false;
         cartasSelect.push(elemento);
         elemento.classList.add("virada");
         endGame();
@@ -47,7 +50,7 @@ function desvirarCarta (elemento) {
 function endGame () {
     jogadas++;
     if(document.querySelectorAll(".virada").length == quantCartas){
-        alert(`Você ganhou em ${jogadas} jogadas!`);
+        setTimeout(finalizaGame, 1000);
     }
     verLance();
 }
@@ -55,13 +58,28 @@ function endGame () {
 function verLance () {
     if(cartasSelect.length == 2){
         if(cartasSelect[0].querySelector("img").src !== cartasSelect[1].querySelector("img").src){
-            cartasSelect[0].classList.remove("virada");
-            cartasSelect[1].classList.remove("virada");
+            setTimeout(versoCarta, 1000);
         }
-        cartasSelect = [];
+        else {
+            cartasSelect = [];
+            liberaClick = true;
+        }
+    }
+    else {
+        liberaClick = true;
     }
 }
 
+function versoCarta () {
+    cartasSelect[0].classList.remove("virada");
+    cartasSelect[1].classList.remove("virada");
+    cartasSelect = [];
+    liberaClick = true;
+}
+
+function finalizaGame () {
+    alert(`Você ganhou em ${jogadas} jogadas!`);
+}
 
 /*
 <!DOCTYPE html>
