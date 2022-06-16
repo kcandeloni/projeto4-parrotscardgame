@@ -61,17 +61,31 @@ h1 > p {
     cursor: pointer;
 
     transition: all 0.8s linear;
+
+    position: relative;
+}
+
+.verso img:nth-child(1) {
+    opacity: 0;
 }
 
 .virada {
     transform: rotateY(180deg);
 }
 
+.virada img:nth-child(2) {
+    opacity: 0;
+}
+
+.virada img:nth-child(1) {
+    opacity: 1;
+}
+
 .areaGame img {
     width: 100px;
     height: 100px;
-}
-
-.verso {
-    display: none;
+    transition: all 0.4s linear;
+    position: absolute;
+    top: 24px;
+    left: 10px;
 }
