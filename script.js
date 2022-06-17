@@ -83,6 +83,10 @@ function versoCarta () {
 
 function finalizaGame () {
     alert(`Você ganhou em ${jogadas} jogadas em ${contTimer} segundos!`);
+    let escolha = prompt("Deseja iniviar um novo jogo('sim' ou 'não')?");
+    if(escolha === "sim"){
+        startGame();
+    }
 }
 
 function myTimer() {
