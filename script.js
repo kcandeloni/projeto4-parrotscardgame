@@ -3,14 +3,18 @@ let deck = [];
 let jogadas;
 let cartasSelect = [];
 let quantCartas;
+let contTimer;
+
+setInterval(myTimer, 1000);
 
 function startGame () {
     quantCartas = 1;
     jogadas = 0;
     deck = [];
     liberaClick = true;
+    contTimer = 0;
     while((quantCartas % 2 !== 0) || (quantCartas > 14 ) || (quantCartas < 4) ){
-        quantCartas = prompt("Bem vindo(a) ao Parrot Card Game!!\n\nCom qauntas cartas você quer jogar(de 4 até 14)?");
+        quantCartas = prompt("Bem vindo(a) ao Parrot Card Game!!\n\nCom quantas cartas você quer jogar(de 4 até 14)?");
     }
     createDeack(quantCartas);
     createGame();
@@ -61,7 +65,7 @@ function verLance () {
             setTimeout(versoCarta, 1000);
         }
         else {
-            cartasSelect = [];
+            cartasSelect = [];  
             liberaClick = true;
         }
     }
@@ -78,28 +82,10 @@ function versoCarta () {
 }
 
 function finalizaGame () {
-    alert(`Você ganhou em ${jogadas} jogadas!`);
+    alert(`Você ganhou em ${jogadas} jogadas em ${contTimer} segundos!`);
 }
-
-/*
-<!DOCTYPE html>
-<html>
-<body>
-
-<h1>The Window Object</h1>
-<h2>The setInterval() Method</h2>
-
-<p id="demo"></p>
-
-<script>
-setInterval(myTimer, 1000);
 
 function myTimer() {
-  const date = new Date();
-  document.getElementById("demo").innerHTML = date.toLocaleTimeString();
-}
-</script>
-
-</body>
-</html>
-*/
+    contTimer++;
+    document.querySelector(".time").innerHTML = `${contTimer}s`;
+  }
