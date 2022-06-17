@@ -4,8 +4,7 @@ let jogadas;
 let cartasSelect = [];
 let quantCartas;
 let contTimer;
-
-setInterval(myTimer, 1000);
+let idInterval = setInterval(myTimer, 1000);
 
 function startGame () {
     quantCartas = 1;
@@ -82,6 +81,7 @@ function versoCarta () {
 }
 
 function finalizaGame () {
+    clearInterval(idInterval);
     alert(`Você ganhou em ${jogadas} jogadas em ${contTimer} segundos!`);
     let escolha = prompt("Deseja iniviar um novo jogo('sim' ou 'não')?");
     if(escolha === "sim"){
