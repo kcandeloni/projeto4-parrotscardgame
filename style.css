@@ -29,7 +29,7 @@ h1 > p {
 
 .tituloGame {
     width: 100%;
-    margin: 40px auto;
+    margin: 40px 0 auto auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,15 +90,19 @@ h1 > p {
     left: 10px;
 }
 
+.caixaTimer {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
 .time {
     width: 100px;
-    height: 50px;
+    height: 40px;
+    margin-right: 50px;
     background-color: #ffffff;
-    position: absolute;
     font-size: 25px;
     color: grey;
-    top: 50px;
-    right: 100px;
     border-radius: 9px;
     border: 1px solid #99CEA8;
     display: flex;
