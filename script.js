@@ -1,12 +1,14 @@
-const parrot = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "metalparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif"];
+const parrots = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "metalparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif"];
 let deck = [];
 let jogadas;
 let cartasSelect = [];
 let quantCartas;
 let contTimer;
-let idInterval = setInterval(myTimer, 1000);
+let idInterval;
+let escolha;
 
 function startGame () {
+    idInterval = setInterval(myTimer, 1000);
     quantCartas = 1;
     jogadas = 0;
     deck = [];
@@ -22,14 +24,15 @@ function startGame () {
 startGame();
 
 function createDeack(quant) {
+    parrots.sort(comparador);//modificar ordem da lista de papagaios, não é necessário, pórem vai mudar a ordem que escolhe as imagens para qauntidades < 14
     for(let i = 0 ; i < quant/2; i++){
-        deck.push(parrot[i]);
-        deck.push(parrot[i]);
+        deck.push(parrots[i]);
+        deck.push(parrots[i]);
     }
-    deck.sort(comparador); // Após esta linha, a minhaArray estará embaralhada
+    deck.sort(comparador); // Após esta linha, a minhaArray estará embaralhada (função disponibilizda no notion)
 }
 
-// Esta função pode ficar separada do código acima, onde você preferir
+// Esta função pode ficar separada do código acima, onde você preferir (função disponibilizda no notion)
 function comparador() { 
 	return Math.random() - 0.5; 
 }
@@ -83,7 +86,10 @@ function versoCarta () {
 function finalizaGame () {
     clearInterval(idInterval);
     alert(`Você ganhou em ${jogadas} jogadas em ${contTimer} segundos!`);
-    let escolha = prompt("Deseja iniviar um novo jogo('sim' ou 'não')?");
+    escolha = "éoq";
+    while(escolha !== "não" && escolha !== "sim"){
+        escolha = prompt("Deseja iniciar um novo jogo('sim' ou 'não')?");
+    }
     if(escolha === "sim"){
         startGame();
     }
